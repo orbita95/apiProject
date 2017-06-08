@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TesteModelStoreContainer" CdmEntityContainer="TesteEntities">
+    <EntitySetMapping Name="Contato">
+      <EntityTypeMapping TypeName="TesteModel.Contato">
+        <MappingFragment StoreEntitySet="Contato">
+          <ScalarProperty Name="contato_id" ColumnName="contato_id" />
+          <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="telefoneResidencial" ColumnName="telefoneResidencial" />
+          <ScalarProperty Name="telefoneComercial" ColumnName="telefoneComercial" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="IM" ColumnName="IM" />
+          <ScalarProperty Name="sitioweb" ColumnName="sitioweb" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nome_contato" ColumnName="nome_contato" />
+          <ScalarProperty Name="endereco_contato_id" ColumnName="endereco_contato_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Endereco">
+      <EntityTypeMapping TypeName="TesteModel.Endereco">
+        <MappingFragment StoreEntitySet="Endereco">
+          <ScalarProperty Name="endereco_id" ColumnName="endereco_id" />
+          <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pessoa">
+      <EntityTypeMapping TypeName="TesteModel.Pessoa">
+        <MappingFragment StoreEntitySet="Pessoa">
+          <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

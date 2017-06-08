@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TesteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contato">
+          <Key>
+            <PropertyRef Name="contato_id" />
+          </Key>
+          <Property Name="contato_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pessoa_id" Type="int" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="20" />
+          <Property Name="telefoneResidencial" Type="varchar" MaxLength="20" />
+          <Property Name="telefoneComercial" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="IM" Type="varchar" MaxLength="50" />
+          <Property Name="sitioweb" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="nome_contato" Type="varchar" MaxLength="20" />
+          <Property Name="endereco_contato_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="endereco_id" />
+          </Key>
+          <Property Name="endereco_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pessoa_id" Type="int" Nullable="false" />
+          <Property Name="logradouro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="complemento" Type="varchar" MaxLength="30" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="20" />
+          <Property Name="cidade" Type="varchar" MaxLength="20" />
+          <Property Name="bairro" Type="varchar" MaxLength="20" />
+          <Property Name="numero" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="pessoa_id" />
+          </Key>
+          <Property Name="pessoa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TesteModelStoreContainer">
+          <EntitySet Name="Contato" EntityType="Self.Contato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TesteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contato">
+          <Key>
+            <PropertyRef Name="contato_id" />
+          </Key>
+          <Property Name="contato_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telefoneResidencial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telefoneComercial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sitioweb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="nome_contato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="endereco_contato_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="endereco_id" />
+          </Key>
+          <Property Name="endereco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+          <Property Name="logradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="complemento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="pessoa_id" />
+          </Key>
+          <Property Name="pessoa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EntitadesTeste" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contato" EntityType="Self.Contato" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TesteModelStoreContainer" CdmEntityContainer="EntitadesTeste">
+          <EntitySetMapping Name="Contato">
+            <EntityTypeMapping TypeName="TesteModel.Contato">
+              <MappingFragment StoreEntitySet="Contato">
+                <ScalarProperty Name="contato_id" ColumnName="contato_id" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="telefoneResidencial" ColumnName="telefoneResidencial" />
+                <ScalarProperty Name="telefoneComercial" ColumnName="telefoneComercial" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="IM" ColumnName="IM" />
+                <ScalarProperty Name="sitioweb" ColumnName="sitioweb" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nome_contato" ColumnName="nome_contato" />
+                <ScalarProperty Name="endereco_contato_id" ColumnName="endereco_contato_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Endereco">
+            <EntityTypeMapping TypeName="TesteModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="endereco_id" ColumnName="endereco_id" />
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="TesteModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="pessoa_id" ColumnName="pessoa_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

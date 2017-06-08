@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TesteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contato">
+    <Key>
+      <PropertyRef Name="contato_id" />
+    </Key>
+    <Property Name="contato_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+    <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telefoneResidencial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telefoneComercial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sitioweb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" Nullable="false" />
+    <Property Name="nome_contato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="endereco_contato_id" Type="Int32" />
+    <NavigationProperty Name="Pessoa" Relationship="Self.FK__Contato__pessoa___15502E78" FromRole="Contato" ToRole="Pessoa" />
+  </EntityType>
+  <EntityType Name="Endereco">
+    <Key>
+      <PropertyRef Name="endereco_id" />
+    </Key>
+    <Property Name="endereco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+    <Property Name="logradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="complemento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pessoa" Relationship="Self.FK__Endereco__pessoa__1273C1CD" FromRole="Endereco" ToRole="Pessoa" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="pessoa_id" />
+    </Key>
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Contato" Relationship="Self.FK__Contato__pessoa___15502E78" FromRole="Pessoa" ToRole="Contato" />
+    <NavigationProperty Name="Endereco" Relationship="Self.FK__Endereco__pessoa__1273C1CD" FromRole="Pessoa" ToRole="Endereco" />
+  </EntityType>
+  <Association Name="FK__Contato__pessoa___15502E78">
+    <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+    <End Role="Contato" Type="Self.Contato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="pessoa_id" />
+      </Principal>
+      <Dependent Role="Contato">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Endereco__pessoa__1273C1CD">
+    <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+    <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="pessoa_id" />
+      </Principal>
+      <Dependent Role="Endereco">
+        <PropertyRef Name="pessoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TesteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contato" EntityType="Self.Contato" />
+    <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+    <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+    <AssociationSet Name="FK__Contato__pessoa___15502E78" Association="Self.FK__Contato__pessoa___15502E78">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Contato" EntitySet="Contato" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Endereco__pessoa__1273C1CD" Association="Self.FK__Endereco__pessoa__1273C1CD">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Endereco" EntitySet="Endereco" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

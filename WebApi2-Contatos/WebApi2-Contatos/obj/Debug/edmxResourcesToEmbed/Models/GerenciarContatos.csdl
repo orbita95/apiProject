@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TesteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contato">
+    <Key>
+      <PropertyRef Name="contato_id" />
+    </Key>
+    <Property Name="contato_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+    <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telefoneResidencial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telefoneComercial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sitioweb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" Nullable="false" />
+    <Property Name="nome_contato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="endereco_contato_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Endereco">
+    <Key>
+      <PropertyRef Name="endereco_id" />
+    </Key>
+    <Property Name="endereco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" />
+    <Property Name="logradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="complemento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="pessoa_id" />
+    </Key>
+    <Property Name="pessoa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EntitadesTeste" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contato" EntityType="Self.Contato" />
+    <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+    <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+  </EntityContainer>
+</Schema>

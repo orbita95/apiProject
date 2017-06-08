@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebAppConsumindoRestContatos.Models.Contatos>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Contatos de @Html.DisplayText("nomePessoa")</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Celular
+        </th>
+        <th>
+            Telefone Residencial
+        </th>
+        <th>
+            Telefone Comercial
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            IM
+        </th>
+        <th>
+            Web Site
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Nome
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefoneResidencial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefoneComercial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sitioweb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_contato)
+            </td>
+
+            <td>
+                @Html.ActionLink("Deletar Contato", "Index", "Contatos")
+                
+            </td>
+        </tr>
+    }
+
+</table>
